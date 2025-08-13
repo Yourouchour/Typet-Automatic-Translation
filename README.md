@@ -1,4 +1,4 @@
-# Typst-Automatic-Translation
+# Typst-Automatic-Translation (unofficial)
 
 Translate English on the typst.app into other languages.
 
