@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Typet Automatic Translation
+// @name         Typst Automatic Translation (unofficial)
 // @namespace    http://tampermonkey.net/
 // @version      2025-08-13
-// @description  Typst Automatic Translation
+// @description  Typst Automatic Translation (unofficial)
 // @author       Yourouchour
 // @match        https://typst.app/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
