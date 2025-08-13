@@ -9,8 +9,8 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
-    'use strict';
+(function () {
+    "use strict";
     const ChineseTranslation = {
         "About Typst": "关于Typst",
         "Account settings": "账户设置",
@@ -61,8 +61,8 @@
         "Tutorial": "教程",
         "Undo": "撤销",
         "Upload file": "上传文件",
-        "View": "视图"
-    }
+        "View": "视图",
+    };
     const Translation = ChineseTranslation;
     function translateFragment(fragment) {
         const newText = Translation[fragment.innerText];
@@ -77,20 +77,20 @@
         if (headerButtons) {
             headerButtons.forEach(button => {
                 translateFragment(button);
-            })
+            });
         }
-        const menus = document.querySelectorAll("ul[role=menu]")
+        const menus = document.querySelectorAll("ul[role=menu]");
         menus.forEach(menu => {
-            const menuItems = menu.querySelectorAll("li[role=menuitem]")
+            const menuItems = menu.querySelectorAll("li[role=menuitem]");
             if (menuItems) {
                 menuItems.forEach(item => {
                     const span = item.querySelector("span");
                     if (span) {
                         translateFragment(span);
                     }
-                })
+                });
             }
-        })
+        });
         const h1 = document.querySelector("h1");
         if (h1) {
             translateFragment(h1);
@@ -108,11 +108,11 @@
             const strongs = projectListHeader.querySelectorAll("strong");
             strongs.forEach(strong => {
                 translateFragment(strong);
-            })
+            });
             const spans = projectListHeader.querySelectorAll("span");
             spans.forEach(span => {
                 translateFragment(span);
-            })
+            });
         }
         observer.observe(document.body, { childList: true, subtree: true });
     }

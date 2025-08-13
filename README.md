@@ -1,4 +1,5 @@
 # Typst-Automatic-Translation
+
 Translate English on the typst.app into other languages.
 
 ## Usage
@@ -9,3 +10,13 @@ Since the program is currently in an early version, the only way to use it at th
 - Added support for switching other languages;
 - Stop monitoring while editing text until you finish editing;
 - Lower uptime and storage.
+
+## Development
+
+### Formatting
+
+Formatting is done with [`prettier`](https://prettier.io):
+
+```sh
+prettier -w i
+```
