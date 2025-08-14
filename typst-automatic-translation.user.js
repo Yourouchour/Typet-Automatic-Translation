@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Typst Automatic Translation (unofficial)
 // @namespace    http://tampermonkey.net/
-// @version      2025-08-13
+// @version      2025-08-14
 // @description  Typst Automatic Translation (unofficial)
 // @author       Yourouchour
 // @match        https://typst.app/*
@@ -15,6 +15,7 @@
      * @type {Object<string, string?>}
      */
     const EnglishTranslation = {
+        "Change language": "Change language",
         "Cancel": "Cancel",
         "Confirm": "Confirm",
     }
@@ -73,6 +74,7 @@
         "Upload file": "上传文件",
         "View": "视图",
 
+        "Change language": "切换语言",
         "Cancel": "取消",
         "Confirm": "确认",
         "Language": "语言",
@@ -81,8 +83,10 @@
      * @type {Object<string, string?>}
      */
     const RussianTranslation = {
-        "Cancwl": "Отмена",
+        "Change language": "Изменить язык",
+        "Cancel": "Отмена",
         "Confirm": "Подтвердить",
+        "Language": "Язык",
     }
     let Translation = EnglishTranslation;
     const savedLanguage = localStorage.getItem("typstAutomaticTranslationLanguage");
@@ -163,7 +167,7 @@
 
             // modal title
             const title = document.createElement("div");
-            title.innerText = "选择语言";
+            title.innerText = Translation["Change language"]
             title.style.padding = "16px";
             title.style.fontSize = "16px";
             title.style.fontWeight = "600";
