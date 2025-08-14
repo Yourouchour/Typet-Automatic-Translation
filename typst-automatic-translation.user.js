@@ -119,7 +119,7 @@
         const menuBar = header.querySelector("div");
         if (!menuBar) return;
         
-        const secondButtonDiv = menuBar.children[1];
+        const secondButtonDiv = menuBar.children[menuBar.children.length - 1];
         if (!secondButtonDiv) return;
         
         const newButtonDiv = secondButtonDiv.cloneNode(true);
@@ -304,6 +304,7 @@
      */
     function translate(mutationList, observer) {
         console.log("Translating...");
+        var startTime = performance.now();
         observer.disconnect();
         addChangeLanguageButton();
         const headerButtons = document.querySelector("header")?.querySelectorAll("button");
@@ -348,6 +349,9 @@
             });
         }
         observer.observe(document.body, { childList: true, subtree: true });
+
+        var endTime = performance.now();
+        console.log(`Translation took ${endTime - startTime} milliseconds.`);
     }
     const observer = new MutationObserver(translate);
     observer.observe(document.body, { childList: true, subtree: true });
