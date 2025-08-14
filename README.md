@@ -4,9 +4,12 @@ Translate English on the typst.app into other languages.
 
 ## Usage
 
-Since the program is currently in an early version, the only way to use it at this time is to manually download the source file from GitHub. This means you need to check for updates manually. For information on how to work with the script (install, use, update), see https://www.tampermonkey.net.
+Since the program is currently in an early version, the only way to use it at this time is to manually download the source file from GitHub. This means you need to check for updates manually.
+
+For information on how to work with the script (install, use, update), see https://www.tampermonkey.net.
 
 Note that the script might not load which results in no translation appearing. To fix this, simply reload the page once or a few times until you see the translations appear.
+
 
 ## Issues to be addressed (help welcome):
 
@@ -17,10 +20,28 @@ Note that the script might not load which results in no translation appearing. T
 
 ## Development
 
-### Formatting
+### Prerequisites
 
-Formatting is done with [`prettier`](https://prettier.io):
+- [`prettier`](https://prettier.io) (for file formatting)
+
+Add pre-commit Git hook after cloning this repository:
 
 ```sh
-prettier -w i
+cat << EOF > .git/hooks/pre-commit
+#!/bin/sh
+if ! prettier -c .; then
+  prettier -w .
+  echo "Files were re-formatted. Please commit these changes." >&2
+  false
+fi
+EOF
+chmod +x .git/hooks/pre-commit
+```
+
+### Formatting
+
+Formatting is done with `prettier`:
+
+```sh
+prettier -w .
 ```
