@@ -98,6 +98,18 @@
         "Cancel": "Отмена",
         "Confirm": "Подтвердить",
         "Language": "Язык",
+
+        // Used on the sign in page.
+        "Back to homepage": "Вернуться на главную страницу",
+        "Create a new account instead": "Регистрация",
+        "Email": "Электронная почта",
+        "Forgot your password?": "Забыли пароль?",
+        "Password": "Пароль",
+        "Please sign in to access this page.\n":
+            "Пожалуйста, войдите, чтобы получить доступ к этой странице.\n",
+        "Sign in": "Войти",
+        "Sign In": "Войти",
+        "The password is incorrect.\n": "Пароль неверный.\n",
     };
     let Translation = EnglishTranslation;
     const savedLanguage = localStorage.getItem("typstAutomaticTranslationLanguage");
