@@ -78,17 +78,6 @@
         "Cancel": "取消",
         "Confirm": "确认",
         "Language": "语言",
-
-        // Used on the sign in page.
-        "Back to homepage": "Translate me",
-        "Create a new account instead": "Translate me",
-        "Email": "Translate me",
-        "Forgot your password?": "Translate me",
-        "Password": "Translate me",
-        "Please sign in to access this page.\n": "Translate me.\n",
-        "Sign in": "Translate me",
-        "Sign In": "Translate me",
-        "The password is incorrect.\n": "Translate me.\n",
     };
     /**
      * @type {Object<string, string?>}
