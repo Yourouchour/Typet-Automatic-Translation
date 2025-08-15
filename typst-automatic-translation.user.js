@@ -18,7 +18,7 @@
         "Change language": "Change language",
         "Cancel": "Cancel",
         "Confirm": "Confirm",
-    }
+    };
     /**
      * @type {Object<string, string?>}
      */
@@ -87,14 +87,32 @@
         "Cancel": "Отмена",
         "Confirm": "Подтвердить",
         "Language": "Язык",
-    }
+
+        // Used on the sign in page.
+        "Back to homepage": "Вернуться на главную страницу",
+        "Create a new account instead": "Регистрация",
+        "Email": "Электронная почта",
+        "Forgot your password?": "Забыли пароль?",
+        "Password": "Пароль",
+        "Please sign in to access this page.\n":
+            "Пожалуйста, войдите, чтобы получить доступ к этой странице.\n",
+        "Sign in": "Войти",
+        "Sign In": "Войти",
+        "The password is incorrect.\n": "Пароль неверный.\n",
+    };
     let Translation = EnglishTranslation;
     const savedLanguage = localStorage.getItem("typstAutomaticTranslationLanguage");
     if (savedLanguage) {
         switch (savedLanguage) {
-            case "en": Translation = EnglishTranslation; break;
-            case "zh": Translation = ChineseTranslation; break;
-            case "ru": Translation = RussianTranslation; break;
+            case "en":
+                Translation = EnglishTranslation;
+                break;
+            case "zh":
+                Translation = ChineseTranslation;
+                break;
+            case "ru":
+                Translation = RussianTranslation;
+                break;
         }
     }
     /**
@@ -102,35 +120,90 @@
      * @param {HTMLElement} element HTML element to translate
      */
     function translateElement(element) {
-        const newText = Translation[element.innerText];
-        if (newText) {
-            element.innerText = newText;
+        const is_input_tag = element instanceof HTMLInputElement;
+        if (is_input_tag && element.type !== "submit") {
+            return;
+        }
+        const key = is_input_tag ? element.value : element.innerText;
+        const translatedText = Translation[key];
+        if (translatedText) {
+            is_input_tag ? (element.value = translatedText) : (element.innerText = translatedText);
         }
     }
     /**
      * Add a language button to the header.
      */
     function addChangeLanguageButton() {
-        const header = document.querySelector("header");
-        if (!header) return;
-        if (header.getAttribute("data-has-language-button") === "true") return;
-        
-        header.setAttribute("data-has-language-button", "true");
-        const menuBar = header.querySelector("div");
-        if (!menuBar) return;
-        
-        const secondButtonDiv = menuBar.children[menuBar.children.length - 1];
-        if (!secondButtonDiv) return;
-        
-        const newButtonDiv = secondButtonDiv.cloneNode(true);
-        const newButton = newButtonDiv.querySelector("button");
-        if (!newButton) return;
-        
-        newButton.innerText = "Language";
-        newButton.setAttribute('data-menubar-index', '5');
-        
+        /**
+         * @type {HTMLElement}
+         */
+        let languageButton;
+        /**
+         * Callback function to add the language button to the UI.
+         * Abstracts the page-specific logic.
+         * @type {function(): void}
+         */
+        let addButtonToUI;
+
+        // Sign in page does not have the menu bar, so the button must be created manually.
+        if (location.pathname.startsWith("/signin")) {
+            const submitRow = document.querySelector(".submit-row");
+            if (!submitRow) return;
+            if (submitRow.getAttribute("data-has-language-button") === "true") return;
+            submitRow.setAttribute("data-has-language-button", "true");
+
+            const buttonElement = document.createElement("button");
+            buttonElement.classList.add("change-language");
+            buttonElement.type = "button";
+
+            // Make use of CSS pseudo-classes instead of JS-based styling.
+            const css = `
+                button.change-language {
+                    background: white;
+                    color: black;
+                    border: 1px solid black;
+                    padding: 10px 20px;
+                }
+                button.change-language:hover {
+                    background: #eee;
+                }
+                button.change-language:active {
+                    background: #ddd;
+                }
+            `;
+            const style = document.createElement("style");
+            if (style.styleSheet) {
+                style.styleSheet.cssText = css;
+            } else {
+                style.appendChild(document.createTextNode(css));
+            }
+            document.getElementsByTagName("head")[0].appendChild(style);
+
+            languageButton = buttonElement;
+            addButtonToUI = () => submitRow.prepend(languageButton);
+        } else {
+            const header = document.querySelector("header");
+            if (!header) return;
+            if (header.getAttribute("data-has-language-button") === "true") return;
+
+            header.setAttribute("data-has-language-button", "true");
+            const menuBar = header.querySelector("div");
+            if (!menuBar) return;
+
+            const secondButtonDiv = menuBar.children[menuBar.children.length - 1];
+            if (!secondButtonDiv) return;
+
+            const newButtonDiv = secondButtonDiv.cloneNode(true);
+            languageButton = newButtonDiv.querySelector("button");
+            if (!languageButton) return;
+            addButtonToUI = () => menuBar.appendChild(newButtonDiv);
+        }
+
+        languageButton.innerText = "Language";
+        languageButton.setAttribute("data-menubar-index", "5");
+
         // create language modal
-        newButton.addEventListener("click", () => {
+        languageButton.addEventListener("click", () => {
             // remove existing modal if it exists
             const existingModal = document.getElementById("language-modal");
             if (existingModal) {
@@ -167,7 +240,7 @@
 
             // modal title
             const title = document.createElement("div");
-            title.innerText = Translation["Change language"]
+            title.innerText = Translation["Change language"];
             title.style.padding = "16px";
             title.style.fontSize = "16px";
             title.style.fontWeight = "600";
@@ -194,7 +267,6 @@
                 { value: "en", text: "English" }, // English
                 { value: "zh", text: "简体中文" }, // Simplified Chinese
                 { value: "ru", text: "Русский" }, // Russian
-
             ];
 
             languages.forEach(lang => {
@@ -216,7 +288,7 @@
             buttonContainer.style.backgroundColor = "#f9f9f9";
 
             const cancelButton = document.createElement("button");
-            cancelButton.innerText = Translation["Cancel"]
+            cancelButton.innerText = Translation["Cancel"];
             cancelButton.style.padding = "8px 16px";
             cancelButton.style.border = "1px solid #d1d1d1";
             cancelButton.style.borderRadius = "4px";
@@ -279,7 +351,7 @@
             };
 
             cancelButton.addEventListener("click", closeModal);
-            overlay.addEventListener("click", (e) => {
+            overlay.addEventListener("click", e => {
                 if (e.target === overlay) closeModal();
             });
 
@@ -287,16 +359,22 @@
                 const selectedLanguage = select.value;
                 console.log(`Change language to: ${selectedLanguage}`);
                 switch (selectedLanguage) {
-                    case "en": Translation = EnglishTranslation; break;
-                    case "zh": Translation = ChineseTranslation; break;
-                    case "ru": Translation = RussianTranslation; break;
+                    case "en":
+                        Translation = EnglishTranslation;
+                        break;
+                    case "zh":
+                        Translation = ChineseTranslation;
+                        break;
+                    case "ru":
+                        Translation = RussianTranslation;
+                        break;
                 }
                 localStorage.setItem("typstAutomaticTranslationLanguage", selectedLanguage);
                 location.reload();
             });
         });
 
-        menuBar.appendChild(newButtonDiv);
+        addButtonToUI();
     }
     /**
      * Main function (callback for `MutationObserver`).
@@ -348,6 +426,22 @@
                 translateElement(span);
             });
         }
+
+        // Used on the sign in page.
+        if (location.pathname.startsWith("/signin")) {
+            const selectors = [
+                "label", // Labels for form fields.
+                "a.back", // Link to return to homepage.
+                ".submit-row > a", // Links under the form.
+                ".status[aria-live='polite']", // Info/error status message.
+                "input[type='submit']", // Submit form button.
+                "button.change-language", // The injected language button.
+            ];
+            for (const selector of selectors) {
+                document.querySelectorAll(selector).forEach(translateElement);
+            }
+        }
+
         observer.observe(document.body, { childList: true, subtree: true });
 
         var endTime = performance.now();
