@@ -1,7 +1,9 @@
 // ==UserScript==
 // @name         Typst Automatic Translation (unofficial)
 // @namespace    http://tampermonkey.net/
-// @version      2025-08-15
+// @version      0.1.0
+// @updateURL    https://raw.githubusercontent.com/yourouchour/Typst-Automatic-Translation/main/typst-automatic-translation.user.js
+// @downloadURL  https://raw.githubusercontent.com/yourouchour/Typst-Automatic-Translation/main/typst-automatic-translation.user.js
 // @description  Typst Automatic Translation (unofficial)
 // @author       Yourouchour
 // @match        https://typst.app/*
