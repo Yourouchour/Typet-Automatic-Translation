@@ -8,8 +8,6 @@ Since the program is currently in an early version, the only way to use it at th
 
 For information on how to work with the script (install, use, update), see https://www.tampermonkey.net.
 
-Note that the script might not load which results in no translation appearing. To fix this, simply reload the page once or a few times until you see the translations appear.
-
 *2025-8-14*: Now the first time you use the program, the original English text will be displayed directly. If you see the `Language` button appear on the header, it means that you have successfully loaded it
 
 ## Issues to be addressed (help welcome):

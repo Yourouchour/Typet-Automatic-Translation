@@ -7,6 +7,7 @@
 // @match        https://typst.app/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
+// @run-at       document-start
 // ==/UserScript==
 
 (function () {
