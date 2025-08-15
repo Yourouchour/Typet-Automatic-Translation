@@ -258,7 +258,7 @@
         "Zoom out": "Уменьшить",
         "alphabetical": "по алфавиту",
         "last created": "по дате создания",
-        "last modified": "по дате изменения"
+        "last modified": "по дате изменения",
     };
     /**
      * @type {Object<string, string?>}
@@ -377,7 +377,7 @@
         "Zoom out": "Verkleinern",
         "alphabetical": "alphabetisch",
         "last created": "Erstellungsdatum",
-        "last modified": "Änderungsdatum"
+        "last modified": "Änderungsdatum",
     };
     /**
      * @type {Object<string, string?>}
@@ -497,7 +497,7 @@
         "Zoom out": "Zoom arrière",
         "alphabetical": "alphabétique",
         "last created": "date de création",
-        "last modified": "dernière modification"
+        "last modified": "dernière modification",
     };
     /**
      * @type {Object<string, string?>}
@@ -520,7 +520,8 @@
         "Confirm": "Confirmar",
         "Convert Word, LaTeX, ... to Typst": "Convertir Word, LaTeX a Typst",
         "Create a new account instead": "Crear nueva cuenta",
-        "Create your own template and start writing": "Crear tu propia plantilla y empezar a escribir",
+        "Create your own template and start writing":
+            "Crear tu propia plantilla y empezar a escribir",
         "Created": "Por fecha de creación",
         "Cursor size": "Tamaño del cursor",
         "Customize a template": "Personalizar plantilla",
@@ -615,11 +616,11 @@
         "Wrap lines": "Ajustar líneas",
         "Zoom in": "Acercar",
         "Zoom out": "Alejar",
-        
+
         // 排序选项
         "alphabetical": "alfabético",
         "last created": "últimos creados",
-        "last modified": "última modificación"
+        "last modified": "última modificación",
     };
     /**
      * @type {Object<string, string?>}
@@ -684,7 +685,8 @@
         "Output panel": "出力パネル",
         "Package project": "プロジェクトをパッケージ化",
         "Password": "パスワード",
-        "Please sign in to access this page.\n": "このページにアクセスするにはログインしてください。\n",
+        "Please sign in to access this page.\n":
+            "このページにアクセスするにはログインしてください。\n",
         "Present": "プレゼンテーション",
         "Project": "プロジェクト",
         "Projects": "すべてのプロジェクト",
@@ -739,7 +741,7 @@
         "Zoom out": "ズームアウト",
         "alphabetical": "アルファベット順",
         "last created": "最終作成日",
-        "last modified": "最終更新日"
+        "last modified": "最終更新日",
     };
     let Translation = EnglishTranslation;
     const savedLanguage = localStorage.getItem("typstAutomaticTranslationLanguage");
@@ -766,7 +768,6 @@
             case "ja":
                 Translation = JapaneseTranslation;
                 break;
-
         }
     }
     /**
@@ -1057,14 +1058,14 @@
         addChangeLanguageButton();
         const selectors = [
             "header button",
-            "a[href=\"/pro/\"]",
+            'a[href="/pro/"]',
             "ul[role=menu] li[role=menuitem] strong, ul[role=menu] li[role=menuitem] span",
             "h1, h2, h3",
             "div[class*=_projectListHeader] strong, div[class*=_projectListHeader] span",
             "th button",
-            "div[role=tooltip]"
+            "div[role=tooltip]",
         ];
-        
+
         for (const selector of selectors) {
             document.querySelectorAll(selector).forEach(translateElement);
         }
