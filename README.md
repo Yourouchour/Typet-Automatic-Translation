@@ -8,9 +8,9 @@ Currently, the only way to use it is to manually download the source file from G
 
 For information on how to work with the script (install, use, update), see https://www.tampermonkey.net.
 
-*0.1.0*: The first version was released, covering most of the buttons and included support for Chinese, Russian, German, French, Spanish, Japanese (currently machine translation).
+_0.1.0_: The first version was released, covering most of the buttons and included support for Chinese, Russian, German, French, Spanish, Japanese (currently machine translation).
 
-*2025-8-14*: Now the first time you use the program, the original English text will be displayed directly. If you see the `Language` button appear on the header, it means that you have successfully loaded it
+_2025-8-14_: Now the first time you use the program, the original English text will be displayed directly. If you see the `Language` button appear on the header, it means that you have successfully loaded it
 
 ## Issues to be addressed (help welcome):
 
@@ -20,6 +20,11 @@ For information on how to work with the script (install, use, update), see https
 - Lower uptime and storage.
 
 ## Development
+
+For a better developer experience, [JSDoc] (paired with [`tsserver`]) is used to provide better autocompletion/hover docs support during code development. When introducing new functions/variables or changing existing ones, please use JSDoc comments.
+
+[JSDoc]: https://jsdoc.app
+[`tsserver`]: https://github.com/microsoft/TypeScript/wiki/Standalone-Server-(tsserver)
 
 ### Prerequisites
 
