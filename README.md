@@ -4,16 +4,18 @@ Translate English on the typst.app into other languages.
 
 ## Usage
 
-Since the program is currently in an early version, the only way to use it at this time is to manually download the source file from GitHub. This means you need to check for updates manually.
+Currently, the only way to use it is to manually download the source file from GitHub. Please go to https://raw.githubusercontent.com/yourouchour/Typst-Automatic-Translation/main/typst-automatic-translation.user.js for the script.
 
 For information on how to work with the script (install, use, update), see https://www.tampermonkey.net.
+
+*0.1.0*: The first version was released, covering most of the buttons and included support for Chinese, Russian, German, French, Spanish, Japanese (currently machine translation).
 
 *2025-8-14*: Now the first time you use the program, the original English text will be displayed directly. If you see the `Language` button appear on the header, it means that you have successfully loaded it
 
 ## Issues to be addressed (help welcome):
 
 - increase the number of entries;
-- Added support for switching other languages;
+- ~~Added support for switching other languages;~~
 - Stop monitoring while editing text until you finish editing;
 - Lower uptime and storage.
 
